@@ -1,27 +1,15 @@
 <!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow, noarchive">
-<title>Lernquizze</title>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow, noarchive"><meta name="color-scheme" content="light"><title>Lernquizze</title>
 <style>
-:root{--bg:#fff;--fg:#1f1f1d;--mut:#5f5e5a;--card:#f4f3ee;--line:#d3d1c7}
-@media (prefers-color-scheme:dark){:root{--bg:#1c1c1a;--fg:#f1efe8;--mut:#b4b2a9;--card:#2c2c2a;--line:#444441}}
-body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
-main{max-width:560px;margin:0 auto;padding:24px 16px 48px}
-h1{font-size:22px;font-weight:500;margin:0 0 6px}
-p{margin:0 0 16px;color:var(--mut);font-size:14px}
-a{display:block;color:var(--fg);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:0 0 8px;min-height:44px}
-a:hover{background:var(--card)}
-a span{display:block;color:var(--mut);font-size:14px}
-</style>
-</head>
-<body>
-<main>
-<h1>Lernquizze</h1>
-<p>Diese Seite speichert keine Daten über dich. Deine Ergebnisse bleiben in deinem Browser.</p>
-<a href="gwb-1/"><b style="font-weight:500">GWB, 1. Klasse: Test am 17.11.2026</b><span>Erde, Karten lesen, Maßstab, Himmelsrichtungen, Höhe, Atlas, Österreich</span></a>
-</main>
-</body>
-</html>
+@font-face{font-family:"Fraunces";src:url(/fonts/fraunces-600.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Hanken Grotesk";src:url(/fonts/hanken-grotesk-500.woff2) format("woff2");font-weight:500;font-display:swap}
+body{margin:0;background:#FAF8FB;color:#3A2440;font:500 17px/1.5 "Hanken Grotesk",system-ui,sans-serif}
+main{max-width:640px;margin:0 auto;padding:32px 16px}
+h1{font:600 clamp(28px,4.2vw + 14px,40px)/1.15 "Fraunces",Georgia,serif;margin:0 0 20px}
+a.card{display:block;min-height:56px;padding:14px 16px;margin:0 0 12px;color:#3A2440;text-decoration:none;background:rgba(185,179,201,.22);border:2px solid #B9B3C9;border-radius:12px}
+a.card:hover{background:rgba(185,179,201,.30);border-color:#3A2440}
+a:focus-visible{outline:2px solid #E4572E;outline-offset:2px}
+small{display:block}
+</style></head><body><main><h1>Lernquizze</h1>
+<a class="card" href="gwb-1/">GWB, 1. Klasse<small>Test am 17.11.2026</small></a>
+</main></body></html>
