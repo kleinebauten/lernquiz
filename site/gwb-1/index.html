@@ -5,71 +5,85 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="color-scheme" content="light">
+<meta name="theme-color" content="#F5F5F5">
 <title>GWB Quiz 1. Klasse</title>
 <style>
-@font-face{font-family:"Fraunces";src:url(/fonts/fraunces-600.woff2) format("woff2");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"Fraunces";src:url(/fonts/fraunces-700.woff2) format("woff2");font-weight:700;font-style:normal;font-display:swap}
 @font-face{font-family:"Hanken Grotesk";src:url(/fonts/hanken-grotesk-500.woff2) format("woff2");font-weight:500;font-style:normal;font-display:swap}
-:root{--paper:#FAF8FB;--aub:#3A2440;--lav:#B9B3C9;--cin:#E4572E;--cind:#B8391F;--ok:#2E7D5B;--fg:#3A2440;--mut:rgba(58,36,64,.55);--card:rgba(185,179,201,.22)}
+@font-face{font-family:"Hanken Grotesk";src:url(/fonts/hanken-grotesk-700.woff2) format("woff2");font-weight:700;font-style:normal;font-display:swap}
+:root{--paper:#F5F5F5;--ink:#09051E;--blue:#C8DDEF;--red:#F33435;--reddk:#F33435;--lime:#E4F5B8;--olive:#B0AA5F;--lav:#C8DDEF;--lav2:#C8DDEF;--ok:#14753D;--okdk:#14753D;--fg:#09051E;--mut:rgba(30,27,46,.55);--r:22px}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;background:var(--paper);color:var(--aub);font-family:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-weight:500;font-size:17px;line-height:1.5}
-header.top{position:sticky;top:0;z-index:2;background:var(--paper)}
-.bar{height:4px;background:var(--lav)}
-.bar i{display:block;height:4px;width:0;background:var(--cin);transition:width .25s ease-out}
-main{flex:1;width:100%;max-width:640px;margin:0 auto;padding:16px 16px 20px}
-@media (max-height:800px){.q{font-size:clamp(24px,3vw + 12px,32px)}.card{min-height:56px;padding:10px 16px;margin-bottom:10px}.fig{padding:8px;margin-bottom:14px}}
+body{margin:0;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;background:var(--paper);color:var(--ink);font-family:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-weight:500;font-size:18px;line-height:1.45}
+header.top{position:sticky;top:0;z-index:3;background:var(--paper);padding:12px 16px 8px}
+.seg{display:flex;gap:3px;max-width:640px;margin:0 auto;height:10px}
+.seg span{flex:1;min-width:2px;border-radius:6px;background:rgba(30,27,46,.13);transition:background .2s ease-out}
+.seg span.ok{background:var(--ok)}
+.seg span.bad{background:var(--red)}
+.seg span.cur{background:var(--ink)}
+main{flex:1;width:100%;max-width:640px;margin:0 auto;padding:12px 16px 24px}
 .enter{animation:in .22s ease-out}
 @keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.meta{display:flex;justify-content:space-between;gap:12px;font-size:16px;margin:0 0 12px}
-h1,.q{font-family:"Fraunces",Georgia,"Times New Roman",serif;font-weight:600;line-height:1.15;margin:0 0 20px}
-.q{font-size:clamp(28px,4.2vw + 14px,40px)}
-.q.long{font-size:28px}
-h1{font-size:clamp(28px,4.2vw + 14px,40px)}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:15px;font-weight:700;margin:0 0 14px}
+.meta span:first-child{background:var(--lav);padding:5px 14px;border-radius:999px}
+h1,.q{font-family:"Fraunces",Georgia,"Times New Roman",serif;font-weight:700;line-height:1.1;margin:0 0 20px;letter-spacing:-.01em}
+.q{font-size:clamp(30px,5vw + 14px,44px)}
+.q.long{font-size:30px}
+h1{font-size:clamp(34px,5vw + 16px,48px)}
+.sec{font-family:"Fraunces",Georgia,serif;font-weight:700;font-size:30px;line-height:1.1;margin:36px 0 10px}
 p{margin:0 0 16px}
-.fig{background:rgba(185,179,201,.2);border-radius:12px;padding:12px;margin:0 0 20px}
+.hint{margin:-8px 0 14px;font-size:16px}
+.fig{background:#fff;border-radius:var(--r);padding:12px;margin:0 0 20px}
 .fig svg{display:block;width:100%;max-width:420px;margin:0 auto;height:auto;max-height:26vh}
-.card{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:56px;margin:0 0 12px;padding:14px 16px;text-align:left;font:inherit;font-size:17px;color:var(--aub);background:var(--card);border:2px solid var(--lav);border-radius:12px;cursor:pointer;transition:background .15s ease-out,border-color .15s ease-out}
-.card:hover:not(:disabled){background:rgba(185,179,201,.30);border-color:var(--aub)}
-.card.sel,.card.sel:hover:not(:disabled){background:var(--paper);border-color:var(--aub);box-shadow:inset 0 0 0 1px var(--aub)}
-.card:disabled{cursor:default;color:var(--aub)}
-.card.ok{background:var(--paper);border-color:var(--ok)}
-.card.bad{background:var(--paper);border-color:var(--cin)}
-.card .ico{flex:none;width:24px;height:24px}
-.card.ok .ico{color:var(--ok)}
-.card.bad .ico{color:var(--cind)}
-.card small{display:block;font-size:16px;opacity:.85}
+@media (max-height:800px){.q{font-size:clamp(26px,4vw + 12px,36px)}.fig{padding:8px;margin-bottom:14px}}
+.card{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:52px;margin:0 0 10px;padding:10px 18px;text-align:left;font:inherit;font-size:16px;font-weight:700;color:var(--ink);background:var(--blue);border:2px solid transparent;border-radius:16px;cursor:pointer;transition:transform .15s ease-out,border-color .15s ease-out,background .15s ease-out}
+.card small{display:block;font-size:14px;font-weight:500;opacity:.85}
+#o .card:hover:not(:disabled){border-color:var(--ink)}
+.card.sel,.card.sel:hover:not(:disabled){background:#fff;border-color:var(--ink)}
+.card:disabled{cursor:default;color:var(--ink);opacity:.55}
+.card.ok:disabled{background:var(--lime);border-color:var(--ok);opacity:1}
+.card.bad:disabled{background:#FFFFFF;border-color:var(--red);opacity:1}
+.card .ico{flex:none;width:28px;height:28px}
+.card.ok .ico{color:var(--okdk)}
+.card.bad .ico{color:var(--reddk)}
+.t0{background:var(--blue)}.t1{background:var(--lime)}.t2{background:#1359A0;color:#F5F5F5}.t3{background:var(--olive)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.ex{margin:4px 0 20px;animation:in .22s ease-out}
-.ex b{font-weight:500;display:block;margin-bottom:4px}
-.ex.good b{color:var(--ok)}
-.ex.nope b{color:var(--cind)}
-.link{font:inherit;color:var(--aub);background:none;border:none;padding:8px 0;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
-.pill{display:block;width:100%;min-height:56px;padding:14px 20px;font:inherit;font-size:18px;color:var(--aub);background:transparent;border:2px solid var(--aub);border-radius:999px;cursor:pointer;margin:0 0 12px}
-.pill:hover{background:rgba(185,179,201,.30)}
-footer{position:sticky;bottom:0;z-index:2;background:var(--paper);border-top:1px solid rgba(185,179,201,.5)}
+.ex{margin:4px 0 20px;padding:16px 18px;border-radius:var(--r);animation:in .22s ease-out}
+.ex.good{background:var(--lime)}
+.ex.nope{background:#FFFFFF}
+.ex b{font-weight:700;display:block;margin-bottom:4px;font-size:20px}
+.ex.good b{color:var(--okdk)}
+.ex.nope b{color:var(--reddk)}
+.link{font:inherit;font-weight:700;color:var(--ink);background:none;border:none;padding:10px 0;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.pill{display:block;width:100%;min-height:48px;padding:10px 18px;font:inherit;font-size:16px;font-weight:700;color:var(--ink);background:transparent;border:2px solid var(--ink);border-radius:999px;cursor:pointer;margin:0 0 12px}
+.pill:hover{background:var(--lav2)}
+footer{position:sticky;bottom:0;z-index:3;background:var(--paper)}
 footer .in{max-width:640px;margin:0 auto;padding:10px 16px calc(12px + env(safe-area-inset-bottom))}
+#er{margin:0 0 6px;font-size:16px;font-weight:700;color:var(--ink)}
 #er:empty{display:none}
-#er{min-height:0;margin:0 0 6px;font-size:16px;color:var(--cind)}
-.main{display:block;width:100%;min-height:56px;padding:14px 20px;font:inherit;font-size:18px;color:var(--paper);background:var(--aub);border:2px solid var(--aub);border-radius:999px;cursor:pointer;transition:background .15s ease-out}
-.main:hover{background:#523660}
-.res{background:rgba(185,179,201,.22);border-radius:12px;padding:20px;margin:0 0 20px}
-.res .big{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:40px;line-height:1.1;display:block;margin:4px 0}
-:focus-visible{outline:2px solid var(--cin);outline-offset:2px}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-.sec{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:26px;line-height:1.2;margin:32px 0 8px}
-.mapw{overflow-x:auto;border-radius:12px;background:rgba(185,179,201,.18);-webkit-overflow-scrolling:touch;margin:0 0 4px}
+.main{display:block;width:100%;min-height:50px;padding:10px 18px;font:inherit;font-size:17px;font-weight:700;color:#fff;background:var(--ink);border:2px solid var(--ink);border-radius:999px;cursor:pointer;transition:background .15s ease-out}
+.main:hover{background:#1359A0}
+.res{background:var(--lav);border-radius:28px;padding:24px;margin:0 0 20px;font-weight:700}
+.res .big{font-family:"Fraunces",Georgia,serif;font-weight:700;font-size:52px;line-height:1.05;display:block;margin:6px 0}
+.mapw{overflow-x:auto;border-radius:var(--r);background:var(--blue);-webkit-overflow-scrolling:touch;margin:0 0 4px}
 .mapw svg{display:block;width:100%;height:auto;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:crosshair}
 .mapw.zoom svg{width:230%}
-.fig.mapfig{padding:0;overflow:hidden;background:rgba(185,179,201,.18)}
+.fig.mapfig{padding:0;overflow:hidden;background:var(--blue)}
 .fig.mapfig svg{max-width:none;max-height:none;width:100%}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
-.chip{font:inherit;font-size:16px;min-height:44px;padding:8px 14px;border-radius:999px;border:2px solid var(--lav);background:transparent;color:var(--aub);cursor:pointer}
-.chip.on{background:var(--aub);color:var(--paper);border-color:var(--aub)}
-.hint{margin:-8px 0 14px;font-size:16px;opacity:.85}
+.chip{font:inherit;font-size:14px;font-weight:700;min-height:38px;padding:6px 14px;border-radius:999px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.chip.on{background:var(--ink);color:#fff}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+body.home{background:var(--lime)}
+body.home header.top{background:var(--lime)}
+html:has(body.home){background:var(--lime)}
+.card.t2 small{color:#F5F5F5}
 </style>
 </head>
 <body>
-<header class="top"><div class="bar"><i id="pg"></i></div></header>
+<header class="top"><div class="seg" id="pg" role="progressbar" aria-label="Fortschritt" aria-valuemin="0"></div></header>
 <main id="main"></main>
 <footer id="foot"></footer>
 <script>
@@ -80,44 +94,44 @@ function grid(){
  for(i=0;i<6;i++){s+='<text '+T+'x="'+(46+i*40)+'" y="14">'+c[i]+'</text>'}
  for(i=0;i<4;i++){s+='<text '+T+'x="12" y="'+(44+i*40)+'">'+(i+1)+'</text>'}
  for(i=0;i<6;i++)for(j=0;j<4;j++){s+='<rect x="'+(30+i*40)+'" y="'+(20+j*40)+'" width="40" height="40" '+L+'/>'}
- s+='<path d="M 35 105 C 50 125, 30 140, 60 150 S 80 170, 100 180" style="fill:none;stroke:#7E73A3;stroke-width:3"/>';
- s+='<circle cx="90" cy="120" r="6" fill="#E4572E"/><text '+T+'x="98" y="116">Stadt</text>';
- s+='<ellipse cx="150" cy="40" rx="36" ry="12" fill="#B8391F"/><text x="133" y="44" style="fill:#F4F0F6;font-size:11px">Gebirge</text>';
- s+='<ellipse cx="210" cy="160" rx="16" ry="12" fill="#7E73A3"/><text x="200" y="164" style="fill:#F4F0F6;font-size:11px">See</text>';
+ s+='<path d="M 35 105 C 50 125, 30 140, 60 150 S 80 170, 100 180" style="fill:none;stroke:#1359A0;stroke-width:3"/>';
+ s+='<circle cx="90" cy="120" r="6" fill="#1359A0"/><text '+T+'x="98" y="116">Stadt</text>';
+ s+='<ellipse cx="150" cy="40" rx="36" ry="12" fill="#B0AA5F"/><text x="133" y="44" style="fill:#09051E;font-size:11px">Gebirge</text>';
+ s+='<ellipse cx="210" cy="160" rx="16" ry="12" fill="#1359A0"/><text x="200" y="164" style="fill:#09051E;font-size:11px">See</text>';
  return svg('0 0 280 190',s,'Suchgitter mit Stadt, Gebirge, Fluss und See');
 }
 function up(x,y,h){return '<line x1="'+x+'" y1="'+(y+h)+'" x2="'+x+'" y2="'+y+'" style="stroke:var(--fg);stroke-width:2"/><polygon points="'+x+','+(y-4)+' '+(x-5)+','+(y+8)+' '+(x+5)+','+(y+8)+'" style="fill:var(--fg)"/><text '+T+'x="'+(x+9)+'" y="'+(y+12)+'">N</text>'}
 function right(x,y,w){return '<line x1="'+x+'" y1="'+y+'" x2="'+(x+w)+'" y2="'+y+'" style="stroke:var(--fg);stroke-width:2"/><polygon points="'+(x+w+4)+','+y+' '+(x+w-8)+','+(y-5)+' '+(x+w-8)+','+(y+5)+'" style="fill:var(--fg)"/><text '+T+'x="'+(x+w+10)+'" y="'+(y+4)+'">N</text>'}
-function pts(a,b){return '<circle cx="'+a[0]+'" cy="'+a[1]+'" r="6" fill="#3A2440"/><text '+T+'x="'+(a[0]+9)+'" y="'+(a[1]+4)+'">A</text><circle cx="'+b[0]+'" cy="'+b[1]+'" r="6" fill="#E4572E"/><text '+T+'x="'+(b[0]+9)+'" y="'+(b[1]+4)+'">B</text>'}
+function pts(a,b){return '<circle cx="'+a[0]+'" cy="'+a[1]+'" r="6" fill="#09051E"/><text '+T+'x="'+(a[0]+9)+'" y="'+(a[1]+4)+'">A</text><circle cx="'+b[0]+'" cy="'+b[1]+'" r="6" fill="#1359A0"/><text '+T+'x="'+(b[0]+9)+'" y="'+(b[1]+4)+'">B</text>'}
 var frame='<rect x="2" y="2" width="276" height="176" '+L+'/>';
 var sk1=svg('0 0 280 180',frame+up(30,20,35)+pts([80,140],[180,40]),'Karte mit Nordpfeil nach oben, Punkt A unten links, Punkt B oben rechts');
 var sk2=svg('0 0 280 180',frame+right(20,30,40)+pts([70,110],[220,110]),'Karte mit Nordpfeil nach rechts, Punkt A links, Punkt B rechts');
-var sk3=svg('0 0 300 130','<circle cx="30" cy="30" r="6" fill="#3A2440"/><text '+T+'x="22" y="52">A</text><circle cx="190" cy="30" r="6" fill="#E4572E"/><text '+T+'x="182" y="52">B</text><line x1="30" y1="30" x2="190" y2="30" style="stroke:var(--mut);stroke-dasharray:4 3"/><rect x="30" y="85" width="80" height="8" style="fill:var(--fg)"/><rect x="110" y="85" width="80" height="8" style="fill:none;stroke:var(--fg)"/><rect x="190" y="85" width="80" height="8" style="fill:var(--fg)"/><text '+T+'x="26" y="112">0</text><text '+T+'x="102" y="112">45</text><text '+T+'x="182" y="112">90</text><text '+T+'x="258" y="112">135 km</text>','Maßstabsleiste mit zwei Orten A und B');
-var el='';[[150,110,70],[135,85,55],[120,60,40],[105,35,25],[95,12,10]].forEach(function(e){el+='<ellipse cx="'+e[0]+'" cy="90" rx="'+e[1]+'" ry="'+e[2]+'" style="fill:none;stroke:#B8391F;stroke-width:1.5"/>'});
+var sk3=svg('0 0 300 130','<circle cx="30" cy="30" r="6" fill="#09051E"/><text '+T+'x="22" y="52">A</text><circle cx="190" cy="30" r="6" fill="#1359A0"/><text '+T+'x="182" y="52">B</text><line x1="30" y1="30" x2="190" y2="30" style="stroke:var(--mut);stroke-dasharray:4 3"/><rect x="30" y="85" width="80" height="8" style="fill:var(--fg)"/><rect x="110" y="85" width="80" height="8" style="fill:none;stroke:var(--fg)"/><rect x="190" y="85" width="80" height="8" style="fill:var(--fg)"/><text '+T+'x="26" y="112">0</text><text '+T+'x="102" y="112">45</text><text '+T+'x="182" y="112">90</text><text '+T+'x="258" y="112">135 km</text>','Maßstabsleiste mit zwei Orten A und B');
+var el='';[[150,110,70],[135,85,55],[120,60,40],[105,35,25],[95,12,10]].forEach(function(e){el+='<ellipse cx="'+e[0]+'" cy="90" rx="'+e[1]+'" ry="'+e[2]+'" style="fill:none;stroke:#B0AA5F;stroke-width:1.5"/>'});
 var sk4=svg('0 0 300 180',el+up(275,25,30),'Höhenlinien eines Berges, links eng, rechts weit');
-var sk5=svg('0 0 300 95','<path d="M 20 40 C 30 20, 45 60, 60 40" style="fill:none;stroke:#7E73A3;stroke-width:3"/><ellipse cx="110" cy="38" rx="20" ry="12" fill="#7E73A3"/><rect x="160" y="26" width="40" height="24" fill="#B9B3C9"/><polygon points="250,20 238,46 262,46" style="fill:#B8391F"/><text '+T+'x="238" y="60">2515</text><text '+T+'x="36" y="86">1</text><text '+T+'x="106" y="86">2</text><text '+T+'x="176" y="86">3</text><text '+T+'x="246" y="86">4</text>','Vier Kartenzeichen');
+var sk5=svg('0 0 300 95','<path d="M 20 40 C 30 20, 45 60, 60 40" style="fill:none;stroke:#1359A0;stroke-width:3"/><ellipse cx="110" cy="38" rx="20" ry="12" fill="#1359A0"/><rect x="160" y="26" width="40" height="24" fill="#C8DDEF"/><polygon points="250,20 238,46 262,46" style="fill:#F33435"/><text '+T+'x="238" y="60">2515</text><text '+T+'x="36" y="86">1</text><text '+T+'x="106" y="86">2</text><text '+T+'x="176" y="86">3</text><text '+T+'x="246" y="86">4</text>','Vier Kartenzeichen');
 var rose=(function(){
  var s='',d=[[0,-60],[42,-42],[60,0],[42,42],[0,60],[-42,42],[-60,0],[-42,-42]],i;
  for(i=0;i<8;i++){s+='<line x1="140" y1="90" x2="'+(140+d[i][0])+'" y2="'+(90+d[i][1])+'" style="stroke:var(--mut);stroke-width:1.5"/>'}
  s+='<text '+T+'x="135" y="18">N</text><text '+T+'x="206" y="94">O</text><text '+T+'x="135" y="170">S</text><text '+T+'x="66" y="94">W</text>';
- s+='<circle cx="98" cy="132" r="8" fill="#E4572E"/><text x="94.5" y="136" style="fill:#F4F0F6;font-size:11px">?</text>';
- return svg('0 0 280 180',s,'Windrose, ein roter Punkt zwischen Süden und Westen');
+ s+='<circle cx="98" cy="132" r="8" fill="#1359A0"/><text x="94.5" y="136" style="fill:#FFFFFF;font-size:11px;font-weight:700">?</text>';
+ return svg('0 0 280 180',s,'Windrose, ein blauer Punkt zwischen Süden und Westen');
 })();
 var rand=svg('0 0 280 170','<rect x="40" y="40" width="200" height="120" '+L+'/><text '+T+'x="124" y="105">Karte</text><line x1="140" y1="40" x2="140" y2="14" style="stroke:var(--fg);stroke-width:2"/><polygon points="140,8 135,20 145,20" style="fill:var(--fg)"/><text '+T+'x="152" y="26">?</text>','Kartenrahmen, Pfeil vom oberen Rand nach oben');
 
 function P(lo,la){return [(lo-9.4)*45,(49.15-la)*66]}
 function poly(a,fill){return '<polygon points="'+a.map(function(p){var q=P(p[0],p[1]);return q[0].toFixed(1)+','+q[1].toFixed(1)}).join(' ')+'" style="fill:'+fill+';fill-opacity:1;stroke:var(--mut);stroke-width:1"/>'}
 var AT=[
-[[[9.53,47.54],[10.18,47.55],[10.17,47.25],[10.12,46.90],[9.88,46.88],[9.60,47.06]],'#B9B3C9'],
-[[[10.18,47.55],[10.45,47.55],[11.1,47.43],[12.17,47.62],[12.25,47.35],[12.15,47.12],[11.8,47.0],[11.1,46.82],[10.45,46.85],[10.12,46.9],[10.17,47.25]],'#D8D4E2'],
-[[[12.2,46.95],[12.4,47.1],[12.7,47.08],[12.85,46.9],[12.6,46.68],[12.25,46.75]],'#D8D4E2'],
-[[[12.17,47.62],[12.75,47.68],[13.0,47.93],[13.35,47.8],[13.6,47.55],[13.6,47.45],[13.5,47.25],[14.05,47.2],[13.8,46.95],[13.3,47.0],[12.7,47.08],[12.4,47.1],[12.15,47.12],[12.25,47.35]],'#B9B3C9'],
-[[[12.7,47.08],[13.3,47.0],[13.8,46.95],[14.5,47.0],[15.05,46.65],[14.5,46.5],[13.7,46.52],[13.0,46.6],[12.6,46.68],[12.85,46.9]],'#ECD9CC'],
-[[[13.6,47.55],[14.1,47.72],[14.9,47.7],[15.5,47.7],[15.9,47.45],[16.1,47.1],[16.1,46.85],[15.8,46.65],[15.2,46.65],[15.05,46.65],[14.5,47.0],[13.8,46.95],[14.05,47.2],[13.5,47.25],[13.6,47.45]],'#D8D4E2'],
-[[[13.0,47.93],[12.75,48.2],[13.4,48.55],[13.8,48.75],[14.8,48.78],[14.5,48.4],[14.45,48.1],[14.6,47.75],[14.1,47.72],[13.6,47.55],[13.35,47.8]],'#ECD9CC'],
-[[[14.8,48.78],[15.2,48.98],[16.0,48.77],[16.95,48.6],[16.85,48.15],[16.45,47.95],[16.2,47.65],[15.8,47.6],[15.5,47.7],[14.9,47.7],[14.6,47.75],[14.45,48.1],[14.5,48.4]],'#B9B3C9'],
-[[[16.45,47.95],[17.1,48.0],[17.15,47.7],[16.6,47.4],[16.45,47.05],[16.1,46.85],[16.1,47.1],[15.9,47.45],[16.2,47.65]],'#ECD9CC'],
-[[[16.2,48.28],[16.45,48.32],[16.55,48.12],[16.3,48.12]],'#E4572E']
+[[[9.53,47.54],[10.18,47.55],[10.17,47.25],[10.12,46.90],[9.88,46.88],[9.60,47.06]],'#C8DDEF'],
+[[[10.18,47.55],[10.45,47.55],[11.1,47.43],[12.17,47.62],[12.25,47.35],[12.15,47.12],[11.8,47.0],[11.1,46.82],[10.45,46.85],[10.12,46.9],[10.17,47.25]],'#C8DDEF'],
+[[[12.2,46.95],[12.4,47.1],[12.7,47.08],[12.85,46.9],[12.6,46.68],[12.25,46.75]],'#C8DDEF'],
+[[[12.17,47.62],[12.75,47.68],[13.0,47.93],[13.35,47.8],[13.6,47.55],[13.6,47.45],[13.5,47.25],[14.05,47.2],[13.8,46.95],[13.3,47.0],[12.7,47.08],[12.4,47.1],[12.15,47.12],[12.25,47.35]],'#C8DDEF'],
+[[[12.7,47.08],[13.3,47.0],[13.8,46.95],[14.5,47.0],[15.05,46.65],[14.5,46.5],[13.7,46.52],[13.0,46.6],[12.6,46.68],[12.85,46.9]],'#E4F5B8'],
+[[[13.6,47.55],[14.1,47.72],[14.9,47.7],[15.5,47.7],[15.9,47.45],[16.1,47.1],[16.1,46.85],[15.8,46.65],[15.2,46.65],[15.05,46.65],[14.5,47.0],[13.8,46.95],[14.05,47.2],[13.5,47.25],[13.6,47.45]],'#C8DDEF'],
+[[[13.0,47.93],[12.75,48.2],[13.4,48.55],[13.8,48.75],[14.8,48.78],[14.5,48.4],[14.45,48.1],[14.6,47.75],[14.1,47.72],[13.6,47.55],[13.35,47.8]],'#E4F5B8'],
+[[[14.8,48.78],[15.2,48.98],[16.0,48.77],[16.95,48.6],[16.85,48.15],[16.45,47.95],[16.2,47.65],[15.8,47.6],[15.5,47.7],[14.9,47.7],[14.6,47.75],[14.45,48.1],[14.5,48.4]],'#C8DDEF'],
+[[[16.45,47.95],[17.1,48.0],[17.15,47.7],[16.6,47.4],[16.45,47.05],[16.1,46.85],[16.1,47.1],[15.9,47.45],[16.2,47.65]],'#E4F5B8'],
+[[[16.2,48.28],[16.45,48.32],[16.55,48.12],[16.3,48.12]],'#1359A0']
 ];
 var CITY=[['Bregenz',9.75,47.5,4,124],['Innsbruck',11.4,47.27,62,140],['Salzburg',13.05,47.8,128,82],['Linz',14.29,48.31,200,48],['St. Pölten',15.63,48.2,248,52],['Wien',16.37,48.21,322,50],['Eisenstadt',16.52,47.85,298,104],['Graz',15.44,47.07,254,153],['Klagenfurt',14.31,46.62,196,181]];
 var atl=(function(){
@@ -139,7 +153,7 @@ var BASE=[
 ["Maßstab","","Maßstab 1 : 50 000. Wie viel in Wirklichkeit entspricht 1 cm auf der Karte?","500 m",["50 m","5 km","50 km"],"50 000 cm sind 500 m. Tipp: zwei Stellen abdecken ergibt Meter."],
 ["Maßstab","","Maßstab 1 : 1 500 000. Wie viel in Wirklichkeit entspricht 1 cm?","15 km",["1,5 km","150 km","15 m"],"Fünf Stellen abdecken ergibt Kilometer: 1 500 000 cm sind 15 km."],
 ["Maßstab","","Welche Aussage stimmt?","1 : 5 000 ist ein großer Maßstab und zeigt viele Einzelheiten",["1 : 5 000 ist ein kleiner Maßstab","Je größer die Maßstabszahl, desto genauer die Karte","Alle Karten haben denselben Maßstab"],"Kleine Maßstabszahl bedeutet großer Maßstab und eine genauere Karte (z. B. Stadtplan)."],
-["Himmelsrichtungen",rose,"Der rote Punkt liegt genau zwischen Süd und West. Welche Himmelsrichtung ist das?","SW",["NW","WSW","SO"],"Nebenhimmelsrichtungen: NO, SO, SW, NW."],
+["Himmelsrichtungen",rose,"Der blaue Punkt liegt genau zwischen Süd und West. Welche Himmelsrichtung ist das?","SW",["NW","WSW","SO"],"Nebenhimmelsrichtungen: NO, SO, SW, NW."],
 ["Himmelsrichtungen",rand,"Wohin zeigt bei Karten der obere Rand?","nach Norden",["nach Süden","nach Osten","immer nach Westen"],"Fehlt ein Pfeil, ist oben Norden. Sonst zeigt der Pfeil nach Norden."],
 ["Höhe","","Gipfel: 2515 m, Hütte: 1375 m. Wie groß ist die relative Höhe?","1140 m",["3890 m","1240 m","2515 m"],"Relative Höhe = Höhenunterschied: 2515 m minus 1375 m."],
 ["Höhe","","Von wo aus wird die absolute Höhe gemessen?","vom Meeresspiegel (Normalnull)",["vom nächsten Tal","von der Hütte","vom Gipfel"],"Absolute Höhe: ab Meeresspiegel (NN). Die relative Höhe muss man berechnen."],
@@ -149,7 +163,7 @@ var BASE=[
 ["Österreich",atl,"Welche Landeshauptstadt gehört zur Steiermark?","Graz",["Klagenfurt","Linz","Eisenstadt"],"Bregenz (V), Innsbruck (T), Salzburg (S), Klagenfurt (K), Linz (OÖ), St. Pölten (NÖ), Eisenstadt (B), Wien (W)."]
 ];
 var KARTE=[
-["Suchgitter",grid(),"In welchem Feld liegt die Stadt (roter Punkt)?","B3",["C3","B2","A3"],"Zuerst der Buchstabe (oben), dann die Zahl (seitlich): Spalte B, Zeile 3."],
+["Suchgitter",grid(),"In welchem Feld liegt die Stadt (blauer Punkt)?","B3",["C3","B2","A3"],"Zuerst der Buchstabe (oben), dann die Zahl (seitlich): Spalte B, Zeile 3."],
 ["Suchgitter",grid(),"In welchen Feldern liegt das Gebirge (braun)?","C1 und D1",["C2 und D2","B1 und C1","D1 und E1"],"Das Gebirge liegt in der obersten Zeile, in den Spalten C und D."],
 ["Suchgitter",grid(),"In welchem Feld liegt der See?","E4",["E3","F4","D4"],"Spalte E, Zeile 4."],
 ["Suchgitter",grid(),"Durch welche Felder verläuft der Fluss (blaue Linie)?","A3, A4 und B4",["B3, B4 und C4","A2, A3 und B3","A4, B4 und C4"],"Der Fluss beginnt in A3, geht durch A4 und endet in B4."],
@@ -178,11 +192,18 @@ function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math
 var main=document.getElementById('main'),foot=document.getElementById('foot'),pg=document.getElementById('pg');
 var Q,order,i,score,wrong,mode;
 var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-function render(html){main.innerHTML='<div class="enter">'+html+'</div>';window.scrollTo(0,0)}
-function start(m){mode=m;Q=MODES[m][1];order=shuf(Q.map(function(_,k){return k}));i=0;score=0;wrong={};show()}
+function render(html){document.body.classList.remove('home');main.innerHTML='<div class="enter">'+html+'</div>';window.scrollTo(0,0)}
+function menu(){
+ prog(0,0,[]);foot.innerHTML='';
+ var h='<h1>GWB Quiz</h1><p>Für den Test 17.11.: Erde, Kontinente, Karten, Maßstab, Himmelsrichtungen, Höhe, Atlas und Österreich.</p>';
+ Object.keys(MODES).forEach(function(k){h+='<button class="card" data-m="'+k+'"><span>'+MODES[k][0]+'<small>'+MODES[k][1].length+' Fragen</small></span></button>'});
+ render(h);
+ main.querySelectorAll('.card').forEach(function(b){b.onclick=function(){start(b.getAttribute('data-m'))}});
+}
+function start(m){mode=m;Q=MODES[m][1];order=shuf(Q.map(function(_,k){return k}));i=0;score=0;wrong={};RS=[];show()}
 function show(){
  var q=Q[order[i]],opts=shuf([q[3]].concat(q[4])),sel=null,selB=null,done=false;
- pg.style.width=(i/Q.length*100)+'%';
+ prog(Q.length,i,RS);
  render('<div class="meta"><span>'+q[0]+'</span><span>Frage '+(i+1)+' von '+Q.length+'</span></div><h1 class="q'+(q[2].length>60?' long':'')+'">'+q[2]+'</h1>'+q[1]+'<div id="o" role="group" aria-label="Antworten"></div><div id="ex" aria-live="polite"></div><button class="link" id="mn">Zurück zum Menü</button>');
  foot.innerHTML='<div class="in"><p id="er" role="alert"></p><button class="main" id="cf">Antwort bestätigen</button></div>';
  var o=document.getElementById('o'),er=document.getElementById('er'),cf=document.getElementById('cf');
@@ -202,7 +223,7 @@ function show(){
    if(sel===null){er.textContent='Wähle zuerst eine Antwort aus.';return}
    done=true;
    var good=sel===q[3];
-   if(good)score++;else wrong[q[0]]=1;
+   if(good)score++;else wrong[q[0]]=1;RS.push(good);prog(Q.length,i+1,RS);
    o.querySelectorAll('.card').forEach(function(x){
     x.disabled=true;x.classList.remove('sel');
     var t=x.getAttribute('data-t');
@@ -219,7 +240,7 @@ function show(){
  };
 }
 function end(){
- pg.style.width='100%';
+ prog(Q.length,Q.length,RS);
  var p=Math.round(score/Q.length*100),w=Object.keys(wrong),msg=p>=90?'Sehr stark.':p>=70?'Gut, ein paar Themen noch wiederholen.':'Guter Start, jetzt gezielt üben.';
  render('<div class="res"><span>Ergebnis</span><span class="big">'+score+' von '+Q.length+'</span><span>'+msg+'</span></div>'+(w.length?'<p>Nochmal anschauen: '+w.join(', ')+'</p>':'<p>Keine Fehler. Alle Themen sitzen.</p>')+'<button class="pill" id="mn">Zurück zum Menü</button>');
  foot.innerHTML='<div class="in"><p id="er"></p><button class="main" id="rs">Nochmal ('+MODES[mode][0]+')</button></div>';
@@ -261,25 +282,33 @@ function resolve(c,x,y){var best=null,bd=1e9,d;
  MAPD.ranges.forEach(function(o){d=dell(o,x,y);if(d<bd){bd=d;best=o.n}});return bd<=1?best:null}
 var BASE_S='';
 function baseSVG(){if(BASE_S)return BASE_S;var t='';
- MAPD.neigh.forEach(function(o){t+='<path d="'+o.d+'" fill-rule="evenodd" fill="#F1EDF5" stroke="#B9B3C9" stroke-width=".7"/>'});
- MAPD.states.forEach(function(o){t+='<path d="'+o.d+'" fill-rule="evenodd" fill="'+(o.n==='Wien'?'#DAD3E7':'#E6E1EE')+'" stroke="#3A2440" stroke-width=".8" stroke-linejoin="round"/>'});
- MAPD.rivers.forEach(function(o){o.lines.forEach(function(l){t+='<polyline points="'+l.join(' ')+'" fill="none" stroke="#8F86B5" stroke-width="'+(o.n==='Donau'?1.8:1.1)+'" stroke-linecap="round" stroke-linejoin="round"/>'})});
- MAPD.lakes.forEach(function(o){t+='<path d="'+o.d+'" fill="#8F86B5"/>'});
+ MAPD.neigh.forEach(function(o){t+='<path d="'+o.d+'" fill-rule="evenodd" fill="#EEF4FA" stroke="#C8DDEF" stroke-width=".7"/>'});
+ MAPD.states.forEach(function(o){t+='<path d="'+o.d+'" fill-rule="evenodd" fill="'+(o.n==='Wien'?'#C8DDEF':'#E4F5B8')+'" stroke="#09051E" stroke-width=".8" stroke-linejoin="round"/>'});
+ MAPD.rivers.forEach(function(o){o.lines.forEach(function(l){t+='<polyline points="'+l.join(' ')+'" fill="none" stroke="#1359A0" stroke-width="'+(o.n==='Donau'?1.8:1.1)+'" stroke-linecap="round" stroke-linejoin="round"/>'})});
+ MAPD.lakes.forEach(function(o){t+='<path d="'+o.d+'" fill="#1359A0"/>'});
  return BASE_S=t}
 function px(n,s){return (n*s).toFixed(2)}
-function tc(c){return c==='#E4572E'?'#B8391F':c}
+function tc(c){return c==='#F33435'?'#F33435':c==='#14753D'?'#14753D':c}
 function lp(it){var o=it.o;return it.cat==='stadt'?[o.x,o.y]:it.cat==='gebirge'?o.c:o.lab}
-function label(it,col,s){var p=lp(it),x=p[0],y=p[1],a='middle',hw=it.n.length*7*s*0.5+3*s;
+function labelXY(it,s){var p=lp(it),x=p[0],y=p[1],a='middle',hw=it.n.length*7*s*0.5+3*s;
  if(it.cat==='stadt'&&(it.n==='Linz'||it.n==='Salzburg')){x-=+px(9,s);a='end';y+=+px(4,s)}else if(it.cat==='stadt'&&(it.n==='St. Pölten'||it.n==='Eisenstadt')){y+=+px(19,s);a='middle'}else if(it.cat==='stadt'){x+=+px(9,s);a='start';y+=+px(4,s)}else if(it.n==='Wien'){x+=+px(12,s);a='start';y-=+px(10,s)}else y+=+px(4,s);
  if(a==='middle'){x=Math.max(hw,Math.min(MAPD.w-hw,x))}else if(a==='start'&&x+hw*2>MAPD.w){a='end';x=p[0]-px(9,s)}
- return '<text x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" text-anchor="'+a+'" font-size="'+px(13,s)+'" fill="'+tc(col)+'" stroke="#FAF8FB" stroke-width="'+px(4,s)+'" paint-order="stroke" stroke-linejoin="round">'+it.n+'</text>'}
+ return {x:x,y:y,a:a,n:it.n}}
+function labelSVG(L,col,s){return '<text x="'+L.x.toFixed(1)+'" y="'+L.y.toFixed(1)+'" text-anchor="'+L.a+'" font-size="'+px(13,s)+'" font-weight="700" fill="'+tc(col)+'" stroke="#F5F5F5" stroke-width="'+px(4.5,s)+'" paint-order="stroke" stroke-linejoin="round">'+L.n+'</text>'}
+function label(it,col,s){return labelSVG(labelXY(it,s),col,s)}
+function lbox(L,s){var w=L.n.length*7.9*s,h=13*s,x0=L.a==='middle'?L.x-w/2:L.a==='start'?L.x:L.x-w;return {x0:x0,x1:x0+w,y0:L.y-h*1.0,y1:L.y+h*0.4}}
+function hit(a,b){return a.x0<b.x1&&a.x1>b.x0&&a.y0<b.y1&&a.y1>b.y0}
+function layout(items,s,dots){var placed=[],out=[];(dots||[]).forEach(function(d){placed.push({x0:d.x-4*s,x1:d.x+4*s,y0:d.y-4*s,y1:d.y+4*s})});
+ items.forEach(function(it){var L=labelXY(it,s),offs=[[0,0],[0,14],[0,-14],[0,28],[0,-28],[22,0],[-22,0],[22,14],[-22,-14],[22,-14],[-22,14],[0,42],[0,-42]],best=null;
+  for(var k=0;k<offs.length;k++){var M={x:L.x+offs[k][0]*s,y:L.y+offs[k][1]*s,a:L.a,n:L.n},b=lbox(M,s);if(b.x0<0||b.x1>MAPD.w||b.y0<0||b.y1>MAPD.h)continue;var ok=true;for(var j=0;j<placed.length;j++)if(hit(b,placed[j])){ok=false;break}if(ok){best=M;placed.push(b);break}}
+  if(!best){best=L;placed.push(lbox(L,s))}out.push(best)});return out}
 function hl(it,col,s,lab){var o=it.o,c=it.cat,t='';
  if(c==='stadt'){t+='<circle cx="'+o.x+'" cy="'+o.y+'" r="'+px(11,s)+'" fill="none" stroke="'+col+'" stroke-width="'+px(3,s)+'"/><circle cx="'+o.x+'" cy="'+o.y+'" r="'+px(3.5,s)+'" fill="'+col+'"/>'}
  else if(c==='land'||c==='nachbar'||c==='see'){t+='<path d="'+o.d+'" fill-rule="evenodd" fill="'+col+'" fill-opacity=".5" stroke="'+col+'" stroke-width="'+px(2.5,s)+'" stroke-linejoin="round"/>';if(c==='see')t+='<circle cx="'+o.lab[0]+'" cy="'+o.lab[1]+'" r="'+px(11,s)+'" fill="none" stroke="'+col+'" stroke-width="'+px(2.5,s)+'"/>'}
  else if(c==='fluss'){o.lines.forEach(function(l){t+='<polyline points="'+l.join(' ')+'" fill="none" stroke="'+col+'" stroke-width="'+px(4,s)+'" stroke-linecap="round" stroke-linejoin="round"/>'})}
  else{t+='<ellipse cx="'+o.c[0]+'" cy="'+o.c[1]+'" rx="'+o.rx+'" ry="'+o.ry+'" transform="rotate('+o.rot+' '+o.c[0]+' '+o.c[1]+')" fill="'+col+'" fill-opacity=".5" stroke="'+col+'" stroke-width="'+px(2,s)+'"/>'}
  return t+(lab?label(it,col,s):'')}
-function pin(p,col,s){return '<circle cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="'+px(9,s)+'" fill="'+col+'" stroke="#FAF8FB" stroke-width="'+px(3,s)+'"/><circle cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="'+px(3,s)+'" fill="#FAF8FB"/>'}
+function pin(p,col,s){return '<circle cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="'+px(9,s)+'" fill="'+col+'" stroke="#F5F5F5" stroke-width="'+px(3,s)+'"/><circle cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="'+px(3,s)+'" fill="#F5F5F5"/>'}
 function svgOpen(id){return '<svg id="'+id+'" viewBox="0 0 '+MAPD.w+' '+MAPD.h+'" role="img" aria-label="Stumme Karte von Österreich">'}
 function mapHTML(inner,nz){return '<div class="mapw" id="mw">'+svgOpen('mp')+baseSVG()+'<g id="ov">'+inner+'</g></svg></div>'+(nz?'':'<button class="link" id="zm">Karte vergrößern</button>')}
 function stat(){return +(MAPD.w/Math.max(260,Math.min(window.innerWidth,640)-32)).toFixed(2)}
@@ -292,8 +321,8 @@ function wireMap(){var sv=document.getElementById('mp'),mw=document.getElementBy
 function svgPt(sv,e){var pt=sv.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;var p=pt.matrixTransform(sv.getScreenCTM().inverse());return {x:p.x,y:p.y}}
 
 (function(){var f='<div class="fig mapfig">'+svgOpen('fa')+baseSVG(),st=stat();
- MAPD.cities.forEach(function(c){f+='<circle cx="'+c.x+'" cy="'+c.y+'" r="'+px(4,st)+'" fill="#3A2440"/>'+label({cat:'stadt',n:c.n,o:c},'#3A2440',st)});
- f+='<g stroke="#3A2440" stroke-width="'+px(2,st)+'" fill="#3A2440"><line x1="26" y1="'+(40+0)+'" x2="26" y2="14"/><polygon points="26,8 '+(26-px(5,st)*1)+',22 '+(26+px(5,st)*1)+',22" stroke="none"/></g><text x="'+(26+ +px(9,st))+'" y="26" font-size="'+px(13,st)+'" fill="#3A2440">N</text></svg></div>';
+ MAPD.cities.forEach(function(c){f+='<circle cx="'+c.x+'" cy="'+c.y+'" r="'+px(4,st)+'" fill="#09051E"/>'+label({cat:'stadt',n:c.n,o:c},'#09051E',st)});
+ f+='<g stroke="#09051E" stroke-width="'+px(2,st)+'" fill="#09051E"><line x1="26" y1="'+(40+0)+'" x2="26" y2="14"/><polygon points="26,8 '+(26-px(5,st)*1)+',22 '+(26+px(5,st)*1)+',22" stroke="none"/></g><text x="'+(26+ +px(9,st))+'" y="26" font-size="'+px(13,st)+'" fill="#09051E">N</text></svg></div>';
  BASE.concat(KARTE).forEach(function(q){if(q[1]===atl)q[1]=f})})();
 function densify(strokes){var out=[];strokes.forEach(function(st){for(var k=0;k<st.length;k++){out.push(st[k]);if(k){var a=st[k-1],b=st[k],n=Math.ceil(Math.hypot(b.x-a.x,b.y-a.y)/3);for(var j=1;j<n;j++)out.push({x:a.x+(b.x-a.x)*j/n,y:a.y+(b.y-a.y)*j/n})}}});return out}
 function dUser(pts,x,y){var m=1e9;for(var k=0;k<pts.length;k++){var d=Math.hypot(pts[k].x-x,pts[k].y-y);if(d<m)m=d}return m}
@@ -306,11 +335,14 @@ function gradeDraw(it,strokes){var pts=densify(strokes);if(pts.length<4)return f
 function strokeSVG(strokes,col,cat,s){var t='';strokes.forEach(function(st){if(!st.length)return;var w=cat==='gebirge'?px(16,s):px(3,s);t+='<polyline points="'+st.map(function(p){return p.x.toFixed(1)+','+p.y.toFixed(1)}).join(' ')+'" fill="none" stroke="'+col+'" stroke-opacity="'+(cat==='gebirge'?'.4':'1')+'" stroke-width="'+w+'" stroke-linecap="round" stroke-linejoin="round"/>'});return t}
 /* Einzeichnen */
 var TL,ti,TR,TC;
+var RS=[];
+function prog(n,cur,res){var h='';for(var k=0;k<n;k++)h+='<span class="'+(k<res.length?(res[k]?'ok':'bad'):(k===cur?'cur':''))+'"></span>';pg.innerHTML=h;pg.setAttribute('aria-valuemax',n);pg.setAttribute('aria-valuenow',Math.min(cur,n))}
+function tint(){document.body.classList.toggle('home',!!main.querySelector('.sec'));main.querySelectorAll('.card').forEach(function(b,k){b.classList.add(/^(all|alle)$/.test(b.getAttribute('data-m')||b.getAttribute('data-c')||'')?'t2':'t0')})}
 function tapStart(c){TC=c;TL=shuf(allItems(c));ti=0;TR=[];mode='tap';tapShow()}
 function tapShow(){
  var it=TL[ti],sel=null,done=false,draw=(it.cat==='fluss'||it.cat==='gebirge'),strokes=[],cur=null;
- pg.style.width=(ti/TL.length*100)+'%';
- OVF=function(s){return draw?strokeSVG(strokes,'#3A2440',it.cat,s):(sel?pin(sel,'#3A2440',s):'')};
+ prog(TL.length,ti,TR.map(function(r){return r.ok}));
+ OVF=function(s){return draw?strokeSVG(strokes,'#09051E',it.cat,s):(sel?pin(sel,'#09051E',s):'')};
  var ttl=draw?(it.cat==='fluss'?'Zeichne ein: ':'Male an: ')+it.n:'Tippe auf '+it.n;
  var hint=draw?'<p class="hint">'+(it.cat==='fluss'?'Fahre mit dem Finger den Verlauf des Flusses nach.':'Male das Gebirge mit dem Finger aus.')+'</p>':'';
  render('<div class="meta"><span>'+catSing(it.cat)+'</span><span>Frage '+(ti+1)+' von '+TL.length+'</span></div><h1 class="q">'+ttl+'</h1>'+hint+mapHTML('',draw)+(draw?'<button class="link" id="clr">Zeichnung löschen</button>':'')+'<div id="ex" aria-live="polite"></div><button class="link" id="mn">Zurück zum Menü</button>');
@@ -327,8 +359,8 @@ function tapShow(){
   if(!done){
    if(draw?!densify(strokes).length||densify(strokes).length<4:!sel){er.textContent=draw?'Zeichne zuerst mit dem Finger auf der Karte.':'Tippe zuerst auf die Karte.';return}
    done=true;
-   var g=draw?null:resolve(it.cat,sel.x,sel.y),ok=draw?gradeDraw(it,strokes):g===it.n;TR.push({it:it,ok:ok});
-   OVF=function(s){return hl(it,'#2E7D5B',s,true)+(draw?strokeSVG(strokes,ok?'#2E7D5B':'#E4572E',it.cat,s):pin(sel,ok?'#2E7D5B':'#E4572E',s))};
+   var g=draw?null:resolve(it.cat,sel.x,sel.y),ok=draw?gradeDraw(it,strokes):g===it.n;TR.push({it:it,ok:ok});prog(TL.length,ti+1,TR.map(function(r){return r.ok}));
+   OVF=function(s){return hl(it,'#14753D',s,true)+(draw?strokeSVG(strokes,ok?'#14753D':'#F33435',it.cat,s):pin(sel,ok?'#14753D':'#F33435',s))};
    W.redraw();
    var f=FACT[it.cat+':'+it.n]||'';
    document.getElementById('ex').innerHTML='<div class="ex '+(ok?'good':'nope')+'"><b>'+(ok?'Richtig.':(draw?'Nicht ganz. So liegt '+it.n+' (grün markiert)':'Nicht ganz. Gesucht war: '+it.n+' (grün markiert)'))+'</b>'+(!ok&&g?'Dein Punkt lag bei '+g+'. ':'')+f+'</div>';
@@ -338,11 +370,11 @@ function tapShow(){
  };
 }
 function tapEnd(){
- pg.style.width='100%';
+ prog(TL.length,TL.length,TR.map(function(r){return r.ok}));
  var n=TR.length,k=TR.filter(function(r){return r.ok}).length,p=Math.round(k/n*100),msg=p>=90?'Sehr stark.':p>=70?'Gut, ein paar Dinge noch wiederholen.':'Guter Start, jetzt gezielt üben.';
  var miss=TR.filter(function(r){return !r.ok}).map(function(r){return r.it.n});
  var bc='';if(TC==='alle'||TC.indexOf('+')>0){CATS.forEach(function(c){var l=TR.filter(function(r){return r.it.cat===c[0]});bc+='<p>'+c[1]+': '+l.filter(function(r){return r.ok}).length+' von '+l.length+'</p>'})}
- OVF=function(s){var t='';TR.forEach(function(r){t+=hl(r.it,r.ok?'#2E7D5B':'#E4572E',s,true)});return t};
+ OVF=function(s){var t='';TR.forEach(function(r){t+=hl(r.it,r.ok?'#14753D':'#F33435',s,true)});return t};
  render('<div class="res"><span>Ergebnis</span><span class="big">'+k+' von '+n+'</span><span>'+msg+'</span></div>'+bc+(miss.length?'<p>Nochmal anschauen: '+miss.join(', ')+'</p>':'<p>Alles getroffen.</p>')+'<p>Lösungskarte: grün getroffen, rot nicht getroffen.</p>'+mapHTML('')+'<button class="pill" id="mn">Zurück zum Menü</button>');
  foot.innerHTML='<div class="in"><p id="er"></p><button class="main" id="rs">Nochmal</button></div>';
  wireMap();
@@ -353,21 +385,22 @@ function tapEnd(){
 function genNamen(c){
  return shuf(allItems(c)).map(function(it){
   var pool=shuf(itemsOf(it.cat).filter(function(x){return x.n!==it.n})).slice(0,3).map(function(x){return x.n});
-  var fig='<div class="fig mapfig">'+svgOpen('fg')+baseSVG()+hl(it,'#E4572E',stat(),false)+'</svg></div>';
+  var fig='<div class="fig mapfig">'+svgOpen('fg')+baseSVG()+hl(it,'#1359A0',stat(),false)+'</svg></div>';
   return [catTitle(it.cat),fig,'Was ist auf der Karte markiert?',it.n,pool,FACT[it.cat+':'+it.n]||''];
  });
 }
-function nmStart(c){mode='nm:'+c;MODES[mode]=['Benennen: '+groupTitle(c),null];Q=genNamen(c);order=Q.map(function(_,k){return k});i=0;score=0;wrong={};show()}
+function nmStart(c){mode='nm:'+c;MODES[mode]=['Benennen: '+groupTitle(c),null];Q=genNamen(c);order=Q.map(function(_,k){return k});i=0;score=0;wrong={};RS=[];show()}
 /* Erkunden */
 var EXS={'stadt':true,'land+nachbar':true};
 function exShow(){
- pg.style.width='0%';
+ prog(0,0,[]);
  var ch='';GROUPS.forEach(function(c){ch+='<button class="chip'+(EXS[c[0]]?' on':'')+'" data-c="'+c[0]+'" aria-pressed="'+(!!EXS[c[0]])+'">'+c[1]+'</button>'});
- OVF=function(s){var t='';CATS.forEach(function(c){if(!EXS[groupOf(c[0])])return;itemsOf(c[0]).forEach(function(it){var o=it.o;
-  if(c[0]==='stadt')t+='<circle cx="'+o.x+'" cy="'+o.y+'" r="'+px(4,s)+'" fill="#3A2440"/>';
-  else if(c[0]==='fluss')o.lines.forEach(function(l){t+='<polyline points="'+l.join(' ')+'" fill="none" stroke="#3A2440" stroke-width="'+px(2.2,s)+'" stroke-linecap="round" stroke-linejoin="round"/>'});
-  else if(c[0]==='gebirge')t+='<ellipse cx="'+o.c[0]+'" cy="'+o.c[1]+'" rx="'+o.rx+'" ry="'+o.ry+'" transform="rotate('+o.rot+' '+o.c[0]+' '+o.c[1]+')" fill="#B8391F" fill-opacity=".3"/>';
-  t+=label(it,'#3A2440',s)})});return t};
+ OVF=function(s){var t='',items=[],dots=[];CATS.forEach(function(c){if(!EXS[groupOf(c[0])])return;itemsOf(c[0]).forEach(function(it){var o=it.o;
+  if(c[0]==='stadt'){t+='<circle cx="'+o.x+'" cy="'+o.y+'" r="'+px(4,s)+'" fill="#09051E"/>';dots.push({x:o.x,y:o.y})}
+  else if(c[0]==='fluss')o.lines.forEach(function(l){t+='<polyline points="'+l.join(' ')+'" fill="none" stroke="#1359A0" stroke-width="'+px(2.8,s)+'" stroke-linecap="round" stroke-linejoin="round"/>'});
+  else if(c[0]==='gebirge')t+='<ellipse cx="'+o.c[0]+'" cy="'+o.c[1]+'" rx="'+o.rx+'" ry="'+o.ry+'" transform="rotate('+o.rot+' '+o.c[0]+' '+o.c[1]+')" fill="#B0AA5F" fill-opacity=".6"/>';
+  items.push(it)})});
+  layout(items,s,dots).forEach(function(L){t+=labelSVG(L,'#09051E',s)});return t};
  render('<div class="meta"><span>Lernen</span><span></span></div><h1>Karte erkunden</h1><p>Wähle aus, was auf der Karte beschriftet sein soll.</p><div class="chips" role="group" aria-label="Anzeigen">'+ch+'</div>'+mapHTML(''));
  foot.innerHTML='<div class="in"><button class="main" id="bk">Zurück zum Menü</button></div>';
  var W=wireMap();
@@ -375,23 +408,23 @@ function exShow(){
  document.getElementById('bk').onclick=menu;
 }
 function catMenu(kind){
- pg.style.width='0%';foot.innerHTML='';
- var t=kind==='tap'?'Einzeichnen':'Benennen',d=kind==='tap'?'Du bekommst einen Namen und markierst die Stelle selbst: Städte, Seen, Bundesländer und Nachbarstaaten antippen, Flüsse nachzeichnen, Gebirge ausmalen. Danach bestätigen.':'Ein Teil der Karte ist rot markiert. Wähle den richtigen Namen.';
+ prog(0,0,[]);foot.innerHTML='';
+ var t=kind==='tap'?'Einzeichnen':'Benennen',d=kind==='tap'?'Du bekommst einen Namen und markierst die Stelle selbst: Städte, Seen, Bundesländer und Nachbarstaaten antippen, Flüsse nachzeichnen, Gebirge ausmalen. Danach bestätigen.':'Ein Teil der Karte ist blau markiert. Wähle den richtigen Namen.';
  var h='<h1>'+t+'</h1><p>'+d+'</p>',tot=allItems('alle').length;
- h+='<button class="card" data-c="alle"><span>Alles gemischt<small>'+tot+' Fragen, wie in der Prüfung</small></span></button>';
+ h+='<button class="card" data-c="alle"><span>Alles gemischt<small>'+tot+' Fragen</small></span></button>';
  GROUPS.forEach(function(c){h+='<button class="card" data-c="'+c[0]+'"><span>'+c[1]+'<small>'+allItems(c[0]).length+' Fragen</small></span></button>'});
  h+='<button class="link" id="mn">Zurück zum Menü</button>';
- render(h);
+ render(h);tint();
  main.querySelectorAll('.card').forEach(function(b){b.onclick=function(){var c=b.getAttribute('data-c');kind==='tap'?tapStart(c):nmStart(c)}});
  document.getElementById('mn').onclick=menu;
 }
 function menu(){
- pg.style.width='0%';foot.innerHTML='';
- var h='<h1>GWB Quiz</h1><p>1. Klasse, Test am 17.11.2026. Erde, Kontinente, Karten lesen, Maßstab, Himmelsrichtungen, Höhe, Atlas und Österreich. Die Fragen kommen in zufälliger Reihenfolge.</p>';
+ prog(0,0,[]);foot.innerHTML='';
+ var h='<h1>GWB Quiz</h1><p>Für den Test 17.11.: Erde, Kontinente, Karten, Maßstab, Himmelsrichtungen, Höhe, Atlas und Österreich.</p>';
  ['all','base','karte'].forEach(function(k){h+='<button class="card" data-m="'+k+'"><span>'+MODES[k][0]+'<small>'+MODES[k][1].length+' Fragen</small></span></button>'});
- h+='<h2 class="sec">Stumme Karte Österreich</h2><p>Für die Überprüfung am 24.11.: Landeshauptstädte, Bundesländer, Nachbarstaaten, Flüsse, Seen und Gebirge.</p>';
- h+='<button class="card" data-m="tap"><span>Einzeichnen<small>Selbst antippen, nachzeichnen und ausmalen, wie in der Prüfung</small></span></button><button class="card" data-m="ex"><span>Karte erkunden<small>Zuerst die Namen auf der Karte lernen</small></span></button><button class="card" data-m="nm"><span>Benennen<small>Was ist markiert? Antwort wählen</small></span></button>';
- render(h);
+ h+='<h2 class="sec">Stumme Karte Österreich</h2><p>Für den Test 24.11.: Landeshauptstädte, Bundesländer, Nachbarstaaten, Flüsse, Seen und Gebirge.</p>';
+ h+='<button class="card" data-m="ex"><span>Karte erkunden<small>Zuerst die Namen auf der Karte lernen</small></span></button><button class="card" data-m="tap"><span>Einzeichnen<small>Selbst antippen, nachzeichnen und ausmalen</small></span></button><button class="card" data-m="nm"><span>Benennen<small>Was ist markiert? Antwort wählen</small></span></button>';
+ render(h);tint();
  main.querySelectorAll('.card').forEach(function(b){b.onclick=function(){var m=b.getAttribute('data-m');if(m==='ex')exShow();else if(m==='nm'||m==='tap')catMenu(m);else start(m)}});
 }
 
