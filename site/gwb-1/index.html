@@ -46,7 +46,7 @@ p{margin:0 0 16px}
 .card .ico{flex:none;width:28px;height:28px}
 .card.ok .ico{color:var(--okdk)}
 .card.bad .ico{color:var(--reddk)}
-.t0{background:var(--blue)}.t1{background:var(--lime)}.t2{background:#1359A0;color:#F5F5F5}.t3{background:var(--olive)}
+.t0{background:var(--blue)}.t1{background:var(--lime)}.t2{background:#2D63E9;color:#F5F5F5}.t3{background:var(--olive)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .ex{margin:4px 0 20px;padding:16px 18px;border-radius:var(--r);animation:in .22s ease-out}
 .ex.good{background:var(--lime)}
@@ -62,7 +62,7 @@ footer .in{max-width:640px;margin:0 auto;padding:10px 16px calc(12px + env(safe-
 #er{margin:0 0 6px;font-size:16px;font-weight:700;color:var(--ink)}
 #er:empty{display:none}
 .main{display:block;width:100%;min-height:50px;padding:10px 18px;font:inherit;font-size:17px;font-weight:700;color:#fff;background:var(--ink);border:2px solid var(--ink);border-radius:999px;cursor:pointer;transition:background .15s ease-out}
-.main:hover{background:#1359A0}
+.main:hover{background:#2D63E9}
 .res{background:var(--lav);border-radius:28px;padding:24px;margin:0 0 20px;font-weight:700}
 .res .big{font-family:"Fraunces",Georgia,serif;font-weight:700;font-size:52px;line-height:1.05;display:block;margin:6px 0}
 .mapw{overflow-x:auto;border-radius:var(--r);background:var(--blue);-webkit-overflow-scrolling:touch;margin:0 0 4px}
@@ -94,27 +94,27 @@ function grid(){
  for(i=0;i<6;i++){s+='<text '+T+'x="'+(46+i*40)+'" y="14">'+c[i]+'</text>'}
  for(i=0;i<4;i++){s+='<text '+T+'x="12" y="'+(44+i*40)+'">'+(i+1)+'</text>'}
  for(i=0;i<6;i++)for(j=0;j<4;j++){s+='<rect x="'+(30+i*40)+'" y="'+(20+j*40)+'" width="40" height="40" '+L+'/>'}
- s+='<path d="M 35 105 C 50 125, 30 140, 60 150 S 80 170, 100 180" style="fill:none;stroke:#1359A0;stroke-width:3"/>';
- s+='<circle cx="90" cy="120" r="6" fill="#1359A0"/><text '+T+'x="98" y="116">Stadt</text>';
+ s+='<path d="M 35 105 C 50 125, 30 140, 60 150 S 80 170, 100 180" style="fill:none;stroke:#2D63E9;stroke-width:3"/>';
+ s+='<circle cx="90" cy="120" r="6" fill="#2D63E9"/><text '+T+'x="98" y="116">Stadt</text>';
  s+='<ellipse cx="150" cy="40" rx="36" ry="12" fill="#B0AA5F"/><text x="133" y="44" style="fill:#09051E;font-size:11px">Gebirge</text>';
- s+='<ellipse cx="210" cy="160" rx="16" ry="12" fill="#1359A0"/><text x="200" y="164" style="fill:#09051E;font-size:11px">See</text>';
+ s+='<ellipse cx="210" cy="160" rx="16" ry="12" fill="#2D63E9"/><text x="200" y="164" style="fill:#09051E;font-size:11px">See</text>';
  return svg('0 0 280 190',s,'Suchgitter mit Stadt, Gebirge, Fluss und See');
 }
 function up(x,y,h){return '<line x1="'+x+'" y1="'+(y+h)+'" x2="'+x+'" y2="'+y+'" style="stroke:var(--fg);stroke-width:2"/><polygon points="'+x+','+(y-4)+' '+(x-5)+','+(y+8)+' '+(x+5)+','+(y+8)+'" style="fill:var(--fg)"/><text '+T+'x="'+(x+9)+'" y="'+(y+12)+'">N</text>'}
 function right(x,y,w){return '<line x1="'+x+'" y1="'+y+'" x2="'+(x+w)+'" y2="'+y+'" style="stroke:var(--fg);stroke-width:2"/><polygon points="'+(x+w+4)+','+y+' '+(x+w-8)+','+(y-5)+' '+(x+w-8)+','+(y+5)+'" style="fill:var(--fg)"/><text '+T+'x="'+(x+w+10)+'" y="'+(y+4)+'">N</text>'}
-function pts(a,b){return '<circle cx="'+a[0]+'" cy="'+a[1]+'" r="6" fill="#09051E"/><text '+T+'x="'+(a[0]+9)+'" y="'+(a[1]+4)+'">A</text><circle cx="'+b[0]+'" cy="'+b[1]+'" r="6" fill="#1359A0"/><text '+T+'x="'+(b[0]+9)+'" y="'+(b[1]+4)+'">B</text>'}
+function pts(a,b){return '<circle cx="'+a[0]+'" cy="'+a[1]+'" r="6" fill="#09051E"/><text '+T+'x="'+(a[0]+9)+'" y="'+(a[1]+4)+'">A</text><circle cx="'+b[0]+'" cy="'+b[1]+'" r="6" fill="#2D63E9"/><text '+T+'x="'+(b[0]+9)+'" y="'+(b[1]+4)+'">B</text>'}
 var frame='<rect x="2" y="2" width="276" height="176" '+L+'/>';
 var sk1=svg('0 0 280 180',frame+up(30,20,35)+pts([80,140],[180,40]),'Karte mit Nordpfeil nach oben, Punkt A unten links, Punkt B oben rechts');
 var sk2=svg('0 0 280 180',frame+right(20,30,40)+pts([70,110],[220,110]),'Karte mit Nordpfeil nach rechts, Punkt A links, Punkt B rechts');
-var sk3=svg('0 0 300 130','<circle cx="30" cy="30" r="6" fill="#09051E"/><text '+T+'x="22" y="52">A</text><circle cx="190" cy="30" r="6" fill="#1359A0"/><text '+T+'x="182" y="52">B</text><line x1="30" y1="30" x2="190" y2="30" style="stroke:var(--mut);stroke-dasharray:4 3"/><rect x="30" y="85" width="80" height="8" style="fill:var(--fg)"/><rect x="110" y="85" width="80" height="8" style="fill:none;stroke:var(--fg)"/><rect x="190" y="85" width="80" height="8" style="fill:var(--fg)"/><text '+T+'x="26" y="112">0</text><text '+T+'x="102" y="112">45</text><text '+T+'x="182" y="112">90</text><text '+T+'x="258" y="112">135 km</text>','Maßstabsleiste mit zwei Orten A und B');
+var sk3=svg('0 0 300 130','<circle cx="30" cy="30" r="6" fill="#09051E"/><text '+T+'x="22" y="52">A</text><circle cx="190" cy="30" r="6" fill="#2D63E9"/><text '+T+'x="182" y="52">B</text><line x1="30" y1="30" x2="190" y2="30" style="stroke:var(--mut);stroke-dasharray:4 3"/><rect x="30" y="85" width="80" height="8" style="fill:var(--fg)"/><rect x="110" y="85" width="80" height="8" style="fill:none;stroke:var(--fg)"/><rect x="190" y="85" width="80" height="8" style="fill:var(--fg)"/><text '+T+'x="26" y="112">0</text><text '+T+'x="102" y="112">45</text><text '+T+'x="182" y="112">90</text><text '+T+'x="258" y="112">135 km</text>','Maßstabsleiste mit zwei Orten A und B');
 var el='';[[150,110,70],[135,85,55],[120,60,40],[105,35,25],[95,12,10]].forEach(function(e){el+='<ellipse cx="'+e[0]+'" cy="90" rx="'+e[1]+'" ry="'+e[2]+'" style="fill:none;stroke:#B0AA5F;stroke-width:1.5"/>'});
 var sk4=svg('0 0 300 180',el+up(275,25,30),'Höhenlinien eines Berges, links eng, rechts weit');
-var sk5=svg('0 0 300 95','<path d="M 20 40 C 30 20, 45 60, 60 40" style="fill:none;stroke:#1359A0;stroke-width:3"/><ellipse cx="110" cy="38" rx="20" ry="12" fill="#1359A0"/><rect x="160" y="26" width="40" height="24" fill="#C8DDEF"/><polygon points="250,20 238,46 262,46" style="fill:#F33435"/><text '+T+'x="238" y="60">2515</text><text '+T+'x="36" y="86">1</text><text '+T+'x="106" y="86">2</text><text '+T+'x="176" y="86">3</text><text '+T+'x="246" y="86">4</text>','Vier Kartenzeichen');
+var sk5=svg('0 0 300 95','<path d="M 20 40 C 30 20, 45 60, 60 40" style="fill:none;stroke:#2D63E9;stroke-width:3"/><ellipse cx="110" cy="38" rx="20" ry="12" fill="#2D63E9"/><rect x="160" y="26" width="40" height="24" fill="#C8DDEF"/><polygon points="250,20 238,46 262,46" style="fill:#F33435"/><text '+T+'x="238" y="60">2515</text><text '+T+'x="36" y="86">1</text><text '+T+'x="106" y="86">2</text><text '+T+'x="176" y="86">3</text><text '+T+'x="246" y="86">4</text>','Vier Kartenzeichen');
 var rose=(function(){
  var s='',d=[[0,-60],[42,-42],[60,0],[42,42],[0,60],[-42,42],[-60,0],[-42,-42]],i;
  for(i=0;i<8;i++){s+='<line x1="140" y1="90" x2="'+(140+d[i][0])+'" y2="'+(90+d[i][1])+'" style="stroke:var(--mut);stroke-width:1.5"/>'}
  s+='<text '+T+'x="135" y="18">N</text><text '+T+'x="206" y="94">O</text><text '+T+'x="135" y="170">S</text><text '+T+'x="66" y="94">W</text>';
- s+='<circle cx="98" cy="132" r="8" fill="#1359A0"/><text x="94.5" y="136" style="fill:#FFFFFF;font-size:11px;font-weight:700">?</text>';
+ s+='<circle cx="98" cy="132" r="8" fill="#2D63E9"/><text x="94.5" y="136" style="fill:#FFFFFF;font-size:11px;font-weight:700">?</text>';
  return svg('0 0 280 180',s,'Windrose, ein blauer Punkt zwischen Süden und Westen');
 })();
 var rand=svg('0 0 280 170','<rect x="40" y="40" width="200" height="120" '+L+'/><text '+T+'x="124" y="105">Karte</text><line x1="140" y1="40" x2="140" y2="14" style="stroke:var(--fg);stroke-width:2"/><polygon points="140,8 135,20 145,20" style="fill:var(--fg)"/><text '+T+'x="152" y="26">?</text>','Kartenrahmen, Pfeil vom oberen Rand nach oben');
@@ -131,7 +131,7 @@ var AT=[
 [[[13.0,47.93],[12.75,48.2],[13.4,48.55],[13.8,48.75],[14.8,48.78],[14.5,48.4],[14.45,48.1],[14.6,47.75],[14.1,47.72],[13.6,47.55],[13.35,47.8]],'#E4F5B8'],
 [[[14.8,48.78],[15.2,48.98],[16.0,48.77],[16.95,48.6],[16.85,48.15],[16.45,47.95],[16.2,47.65],[15.8,47.6],[15.5,47.7],[14.9,47.7],[14.6,47.75],[14.45,48.1],[14.5,48.4]],'#C8DDEF'],
 [[[16.45,47.95],[17.1,48.0],[17.15,47.7],[16.6,47.4],[16.45,47.05],[16.1,46.85],[16.1,47.1],[15.9,47.45],[16.2,47.65]],'#E4F5B8'],
-[[[16.2,48.28],[16.45,48.32],[16.55,48.12],[16.3,48.12]],'#1359A0']
+[[[16.2,48.28],[16.45,48.32],[16.55,48.12],[16.3,48.12]],'#2D63E9']
 ];
 var CITY=[['Bregenz',9.75,47.5,4,124],['Innsbruck',11.4,47.27,62,140],['Salzburg',13.05,47.8,128,82],['Linz',14.29,48.31,200,48],['St. Pölten',15.63,48.2,248,52],['Wien',16.37,48.21,322,50],['Eisenstadt',16.52,47.85,298,104],['Graz',15.44,47.07,254,153],['Klagenfurt',14.31,46.62,196,181]];
 var atl=(function(){
@@ -284,8 +284,8 @@ var BASE_S='';
 function baseSVG(){if(BASE_S)return BASE_S;var t='';
  MAPD.neigh.forEach(function(o){t+='<path d="'+o.d+'" fill-rule="evenodd" fill="#EEF4FA" stroke="#C8DDEF" stroke-width=".7"/>'});
  MAPD.states.forEach(function(o){t+='<path d="'+o.d+'" fill-rule="evenodd" fill="'+(o.n==='Wien'?'#C8DDEF':'#E4F5B8')+'" stroke="#09051E" stroke-width=".8" stroke-linejoin="round"/>'});
- MAPD.rivers.forEach(function(o){o.lines.forEach(function(l){t+='<polyline points="'+l.join(' ')+'" fill="none" stroke="#1359A0" stroke-width="'+(o.n==='Donau'?1.8:1.1)+'" stroke-linecap="round" stroke-linejoin="round"/>'})});
- MAPD.lakes.forEach(function(o){t+='<path d="'+o.d+'" fill="#1359A0"/>'});
+ MAPD.rivers.forEach(function(o){o.lines.forEach(function(l){t+='<polyline points="'+l.join(' ')+'" fill="none" stroke="#2D63E9" stroke-width="'+(o.n==='Donau'?1.8:1.1)+'" stroke-linecap="round" stroke-linejoin="round"/>'})});
+ MAPD.lakes.forEach(function(o){t+='<path d="'+o.d+'" fill="#2D63E9"/>'});
  return BASE_S=t}
 function px(n,s){return (n*s).toFixed(2)}
 function tc(c){return c==='#F33435'?'#F33435':c==='#14753D'?'#14753D':c}
@@ -336,7 +336,7 @@ function strokeSVG(strokes,col,cat,s){var t='';strokes.forEach(function(st){if(!
 /* Einzeichnen */
 var TL,ti,TR,TC;
 var RS=[];
-function prog(n,cur,res){var h='';for(var k=0;k<n;k++)h+='<span class="'+(k<res.length?(res[k]?'ok':'bad'):(k===cur?'cur':''))+'"></span>';pg.innerHTML=h;pg.setAttribute('aria-valuemax',n);pg.setAttribute('aria-valuenow',Math.min(cur,n))}
+function prog(n,cur,res){var h='';for(var k=0;k<n;k++)h+='<span class="'+(k<res.length?(res[k]?'ok':'bad'):(k===cur?'cur':''))+'"></span>';pg.innerHTML=h;pg.parentNode.style.display=n?'':'none';pg.setAttribute('aria-valuemax',n);pg.setAttribute('aria-valuenow',Math.min(cur,n))}
 function tint(){document.body.classList.toggle('home',!!main.querySelector('.sec'));main.querySelectorAll('.card').forEach(function(b,k){b.classList.add(/^(all|alle)$/.test(b.getAttribute('data-m')||b.getAttribute('data-c')||'')?'t2':'t0')})}
 function tapStart(c){TC=c;TL=shuf(allItems(c));ti=0;TR=[];mode='tap';tapShow()}
 function tapShow(){
@@ -385,7 +385,7 @@ function tapEnd(){
 function genNamen(c){
  return shuf(allItems(c)).map(function(it){
   var pool=shuf(itemsOf(it.cat).filter(function(x){return x.n!==it.n})).slice(0,3).map(function(x){return x.n});
-  var fig='<div class="fig mapfig">'+svgOpen('fg')+baseSVG()+hl(it,'#1359A0',stat(),false)+'</svg></div>';
+  var fig='<div class="fig mapfig">'+svgOpen('fg')+baseSVG()+hl(it,'#2D63E9',stat(),false)+'</svg></div>';
   return [catTitle(it.cat),fig,'Was ist auf der Karte markiert?',it.n,pool,FACT[it.cat+':'+it.n]||''];
  });
 }
@@ -397,7 +397,7 @@ function exShow(){
  var ch='';GROUPS.forEach(function(c){ch+='<button class="chip'+(EXS[c[0]]?' on':'')+'" data-c="'+c[0]+'" aria-pressed="'+(!!EXS[c[0]])+'">'+c[1]+'</button>'});
  OVF=function(s){var t='',items=[],dots=[];CATS.forEach(function(c){if(!EXS[groupOf(c[0])])return;itemsOf(c[0]).forEach(function(it){var o=it.o;
   if(c[0]==='stadt'){t+='<circle cx="'+o.x+'" cy="'+o.y+'" r="'+px(4,s)+'" fill="#09051E"/>';dots.push({x:o.x,y:o.y})}
-  else if(c[0]==='fluss')o.lines.forEach(function(l){t+='<polyline points="'+l.join(' ')+'" fill="none" stroke="#1359A0" stroke-width="'+px(2.8,s)+'" stroke-linecap="round" stroke-linejoin="round"/>'});
+  else if(c[0]==='fluss')o.lines.forEach(function(l){t+='<polyline points="'+l.join(' ')+'" fill="none" stroke="#2D63E9" stroke-width="'+px(2.8,s)+'" stroke-linecap="round" stroke-linejoin="round"/>'});
   else if(c[0]==='gebirge')t+='<ellipse cx="'+o.c[0]+'" cy="'+o.c[1]+'" rx="'+o.rx+'" ry="'+o.ry+'" transform="rotate('+o.rot+' '+o.c[0]+' '+o.c[1]+')" fill="#B0AA5F" fill-opacity=".6"/>';
   items.push(it)})});
   layout(items,s,dots).forEach(function(L){t+=labelSVG(L,'#09051E',s)});return t};
