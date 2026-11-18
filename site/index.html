@@ -1,15 +1,25 @@
 <!DOCTYPE html>
-<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow, noarchive"><meta name="color-scheme" content="light"><title>Lernquizze</title>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow, noarchive"><meta name="color-scheme" content="light"><meta name="theme-color" content="#E4F5B8"><title>Lernquizze</title>
 <style>
-@font-face{font-family:"Fraunces";src:url(/fonts/fraunces-600.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Instrument Serif";src:url(/fonts/instrument-serif-400.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Hanken Grotesk";src:url(/fonts/hanken-grotesk-500.woff2) format("woff2");font-weight:500;font-display:swap}
-body{margin:0;background:#FAF8FB;color:#3A2440;font:500 17px/1.5 "Hanken Grotesk",system-ui,sans-serif}
+@font-face{font-family:"Hanken Grotesk";src:url(/fonts/hanken-grotesk-700.woff2) format("woff2");font-weight:700;font-display:swap}
+:root{--ink:#0D1B4C;--blue:#2D63E9;--lime:#E4F5B8}
+html{background:var(--lime)}
+body{margin:0;min-height:100vh;min-height:100dvh;background:var(--lime);color:var(--ink);font:500 17px/1.5 "Hanken Grotesk",system-ui,sans-serif}
 main{max-width:640px;margin:0 auto;padding:32px 16px}
-h1{font:600 clamp(28px,4.2vw + 14px,40px)/1.15 "Fraunces",Georgia,serif;margin:0 0 20px}
-a.card{display:block;min-height:56px;padding:14px 16px;margin:0 0 12px;color:#3A2440;text-decoration:none;background:rgba(185,179,201,.22);border:2px solid #B9B3C9;border-radius:12px}
-a.card:hover{background:rgba(185,179,201,.30);border-color:#3A2440}
-a:focus-visible{outline:2px solid #E4572E;outline-offset:2px}
-small{display:block}
+h1{font:400 clamp(48px,6vw + 24px,68px)/1.05 "Instrument Serif",Georgia,serif;margin:0 0 24px}
+a.card{display:block;min-height:52px;padding:14px 18px;margin:0 0 10px;color:#fff;text-decoration:none;font-weight:700;font-size:18px;background:var(--blue);border-radius:16px;transition:transform .15s ease-out,background .15s ease-out}
+a.card:hover{background:#2453CC}
+a.card:active{transform:scale(.98)}
+a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+small{display:block;font-weight:500;font-size:15px;color:#F5F5F5;opacity:.85}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes popin{0%{opacity:0;transform:translateY(20px) scale(.94)}65%{opacity:1;transform:translateY(-3px) scale(1.015)}100%{opacity:1;transform:none}}
+h1{animation:rise .75s cubic-bezier(.2,.8,.2,1) both,wipe .9s cubic-bezier(.65,0,.25,1) both}
+a.card{animation:popin .55s cubic-bezier(.2,.9,.3,1) .4s both}
+@media (prefers-reduced-motion:reduce){h1,a.card{animation:none}}
 </style></head><body><main><h1>Lernquizze</h1>
-<a class="card" href="gwb-1/">GWB, 1. Klasse<small>Test am 17.11.2026</small></a>
+<a class="card" href="gwb-1/">GWB, 1. Klasse<small>Tests am 17.11. und 24.11.2026</small></a>
 </main></body></html>
